@@ -456,7 +456,7 @@
       "apify"
     ]
   },
-  "ApifyActorRun": {
+  "ApifyActor": {
     "id": "apify/actor",
     "author": "drobnikj",
     "keywords": [
