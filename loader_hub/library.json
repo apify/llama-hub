@@ -456,8 +456,8 @@
       "apify"
     ]
   },
-  "ApifyActor": {
-    "id": "apify/actor",
+  "ApifyCallActor": {
+    "id": "apify/call_actor",
     "author": "drobnikj",
     "keywords": [
       "apify"
