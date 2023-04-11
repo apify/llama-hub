@@ -21,7 +21,7 @@ class ApifyDataset(BaseReader):
     def load_data(
         self, dataset_id: str, dataset_mapping_function: Callable[[Dict], Document]
     ) -> List[Document]:
-        """Load data from the dataset.
+        """Load data from the Apify dataset.
         Args:
             dataset_id (str): Dataset ID.
             dataset_mapping_function (Callable[[Dict], Document]): Function to map dataset items to Document.

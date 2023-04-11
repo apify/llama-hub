@@ -1,14 +1,14 @@
-# Apify Dataset Loader
+# Apify Actor Run Loader
 
 Apify is a cloud platform for web scraping and data extraction,
 which provides an [ecosystem](https://apify.com/store) of more than a thousand
 ready-made apps called *Actors* for various scraping, crawling, and extraction use cases.
 
-This loader runs Apify actor and when it is finished loads it's data.
+This loader runs Apify actor and when it is finished loads it's results.
 
 ## Usage
 
-Here's an example usage of the ApifyActor.
+Here's an example usage:
 
 ```python
 from llama_index import download_loader
@@ -23,13 +23,12 @@ def tranform_dataset_item(item):
         },
     )
 
-ApifyActor = download_loader('ApifyDataset')
+ApifyCallActor = download_loader('ApifyCallActor')
 
-reader = ApifyActor(os.environ.get('APIFY_TOKEN'))
+reader = ApifyCallActor(os.environ.get('APIFY_TOKEN'))
 documents = reader.load_data(
     actor_id="apify/website-content-crawler",
-    run_input={"startUrls": [{"url": "https://gpt-index.readthedocs.io/en/latest/"}]}
+    run_input={"startUrls": [{"url": "https://gpt-index.readthedocs.io/en/latest"}]}
     dataset_mapping_function=tranform_dataset_item,
-
 )
 ```

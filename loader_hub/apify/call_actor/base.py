@@ -1,19 +1,20 @@
-"""Apify Actor reader"""
+"""Apify call Actor reader"""
 from typing import Any, Callable, Dict, List, Optional
 
 from llama_index.readers.base import BaseReader
 from llama_index.readers.schema.base import Document
 
 
-class ApifyActor(BaseReader):
-    """Apify Actor reader. Runs and reads data from Apify Actor run.
+class ApifyCallActor(BaseReader):
+    """Apify call Actor reader.
+    It calls an Actor on Apify and reads data when it finihes.
 
     Args:
         apify_token (str): Apify token.
     """
 
     def __init__(self, apify_token: str) -> None:
-        """Initialize Apify Actor reader."""
+        """Initialize Apify call Actor reader."""
         from apify_client import ApifyClient
 
         self.apify_client = ApifyClient(apify_token)
@@ -28,13 +29,13 @@ class ApifyActor(BaseReader):
         memory_mbytes: Optional[int] = None,
         timeout_secs: Optional[int] = None,
     ) -> List[Document]:
-        """Run an Actor on the Apify platform and wait for it to finish and return it's data.
+        """Calls an Actor on the Apify platform and wait for it to finishes and returns it's data.
         Args:
             actor_id (str): The ID or name of the Actor on the Apify platform.
             run_input (Dict): The input object of the Actor that you're trying to run.
             dataset_mapping_function (Callable): A function that takes a single dictionary (an Apify dataset item) and converts it to an instance of the Document class.
             build (str, optional): Optionally specifies the actor build to run. It can be either a build tag or build number.
-            memory_mbytes (int, optional): Optional memory limit for the run, in megabytes.
+            memory_mbytes (int, optional): Optional memory limit for the run in megabytes.
             timeout_secs (int, optional): Optional timeout for the run, in seconds.
         Returns:
             List[Document]: List of documents.

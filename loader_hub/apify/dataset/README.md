@@ -17,14 +17,14 @@ import os
 
 def tranform_dataset_item(item):
     return Document(
-        item.get('text'),
+        item.get("text"),
         extra_info={
-            "url": item.get('url'),
+            "url": item.get("url"),
         },
     )
 
-ApifyDataset = download_loader('ApifyDataset')
+ApifyDataset = download_loader("ApifyDataset")
 
-reader = ApifyDataset(os.environ.get('APIFY_TOKEN'))
-documents = reader.load_data(dataset_id='<dataset_id>', dataset_mapping_function=tranform_dataset_item)
+reader = ApifyDataset(os.environ.get("APIFY_TOKEN"))
+documents = reader.load_data(dataset_id="<dataset_id>", dataset_mapping_function=tranform_dataset_item)
 ```
