@@ -10,14 +10,14 @@ class ApifyCallActor(BaseReader):
     It calls an Actor on Apify and reads data when it finihes.
 
     Args:
-        apify_token (str): Apify token.
+        apify_api_token (str): Apify API token.
     """
 
-    def __init__(self, apify_token: str) -> None:
+    def __init__(self, apify_api_token: str) -> None:
         """Initialize Apify call Actor reader."""
         from apify_client import ApifyClient
 
-        self.apify_client = ApifyClient(apify_token)
+        self.apify_client = ApifyClient(apify_api_token)
 
     def load_data(
         self,

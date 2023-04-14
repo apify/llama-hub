@@ -9,14 +9,14 @@ class ApifyDataset(BaseReader):
     """Apify Dataset reader. Reads data from an Apify dataset.
 
     Args:
-        apify_token (str): Apify API token.
+        apify_api_token (str): Apify API token.
     """
 
-    def __init__(self, apify_token: str) -> None:
+    def __init__(self, apify_api_token: str) -> None:
         """Initialize Apify dataset reader."""
         from apify_client import ApifyClient
 
-        self.apify_client = ApifyClient(apify_token)
+        self.apify_client = ApifyClient(apify_api_token)
 
     def load_data(
         self, dataset_id: str, dataset_mapping_function: Callable[[Dict], Document]
