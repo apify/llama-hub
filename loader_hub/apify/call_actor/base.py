@@ -29,12 +29,12 @@ class ApifyCallActor(BaseReader):
         memory_mbytes: Optional[int] = None,
         timeout_secs: Optional[int] = None,
     ) -> List[Document]:
-        """Calls an Actor on the Apify platform and wait for it to finishes and returns it's data.
+        """Calls an Actor on the Apify platform, waits for it to finish and returns its data.
         Args:
             actor_id (str): The ID or name of the Actor on the Apify platform.
             run_input (Dict): The input object of the Actor that you're trying to run.
             dataset_mapping_function (Callable): A function that takes a single dictionary (an Apify dataset item) and converts it to an instance of the Document class.
-            build (str, optional): Optionally specifies the actor build to run. It can be either a build tag or build number.
+            build (str, optional): Optionally specifies the Actor build to run. It can be either a build tag or build number.
             memory_mbytes (int, optional): Optional memory limit for the run in megabytes.
             timeout_secs (int, optional): Optional timeout for the run, in seconds.
         Returns:
@@ -47,8 +47,8 @@ class ApifyCallActor(BaseReader):
             timeout_secs=timeout_secs,
         )
         items_list = self.apify_client.dataset(
-            actor_call.get("dataset_id")
-        ).list_items()
+            actor_call.get("datasetId")
+        ).list_items(clean=True)
 
         document_list = []
         for item in items_list.items:

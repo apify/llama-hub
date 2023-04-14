@@ -4,11 +4,11 @@ Apify is a cloud platform for web scraping and data extraction,
 which provides an [ecosystem](https://apify.com/store) of more than a thousand
 ready-made apps called *Actors* for various scraping, crawling, and extraction use cases.
 
-This loader loads documents from [Apify dataset](https://docs.apify.com/platform/storage/dataset).
+This loader loads documents from an [Apify dataset](https://docs.apify.com/platform/storage/dataset).
 
 ## Usage
 
-Here's an example usage of the ApifyDataset.
+Here's an example usage of the ApifyDataset loader.
 
 ```python
 from llama_index import download_loader

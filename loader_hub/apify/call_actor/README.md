@@ -4,7 +4,7 @@ Apify is a cloud platform for web scraping and data extraction,
 which provides an [ecosystem](https://apify.com/store) of more than a thousand
 ready-made apps called *Actors* for various scraping, crawling, and extraction use cases.
 
-This loader runs Apify actor and when it is finished loads it's results.
+This loader runs an Apify Actor and when it is finished loads its results.
 
 ## Usage
 

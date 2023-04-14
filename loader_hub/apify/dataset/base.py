@@ -6,10 +6,10 @@ from llama_index.readers.schema.base import Document
 
 
 class ApifyDataset(BaseReader):
-    """Apify Dataset reader. Reads data from Apify dataset.
+    """Apify Dataset reader. Reads data from an Apify dataset.
 
     Args:
-        apify_token (str): Apify token.
+        apify_token (str): Apify API token.
     """
 
     def __init__(self, apify_token: str) -> None:
@@ -28,7 +28,7 @@ class ApifyDataset(BaseReader):
         Returns:
             List[Document]: List of documents.
         """
-        items_list = self.apify_client.dataset(dataset_id).list_items()
+        items_list = self.apify_client.dataset(dataset_id).list_items(clean=True)
 
         document_list = []
         for item in items_list.items:
