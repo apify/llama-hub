@@ -49,7 +49,9 @@ class ApifyCallActor(BaseReader):
             timeout_secs=timeout_secs,
         )
 
-        ApifyDataset = download_loader("ApifyDataset")
+        # TODO: Testing repo, remove before merging into core repo
+        test_repo = "https://raw.githubusercontent.com/apify/llama-hub/feat/apify_loader/loader_hub"
+        ApifyDataset = download_loader("ApifyDataset", test_repo)
         reader = ApifyDataset(self.apify_api_token)
         documents = reader.load_data(
             dataset_id=actor_call.get("datasetId"),
