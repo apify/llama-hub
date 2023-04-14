@@ -25,7 +25,7 @@ def tranform_dataset_item(item):
 
 ApifyCallActor = download_loader('ApifyCallActor')
 
-reader = ApifyCallActor(os.environ.get('APIFY_TOKEN'))
+reader = ApifyCallActor(os.environ.get('APIFY_API_TOKEN'))
 documents = reader.load_data(
     actor_id="apify/website-content-crawler",
     run_input={"startUrls": [{"url": "https://gpt-index.readthedocs.io/en/latest"}]}

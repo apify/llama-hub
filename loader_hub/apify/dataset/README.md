@@ -25,6 +25,6 @@ def tranform_dataset_item(item):
 
 ApifyDataset = download_loader("ApifyDataset")
 
-reader = ApifyDataset(os.environ.get("APIFY_TOKEN"))
+reader = ApifyDataset(os.environ.get("APIFY_API_TOKEN"))
 documents = reader.load_data(dataset_id="<dataset_id>", dataset_mapping_function=tranform_dataset_item)
 ```
