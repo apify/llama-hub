@@ -1,6 +1,7 @@
 """Apify call Actor reader"""
 from typing import Any, Callable, Dict, List, Optional
 
+from llama_index import download_loader
 from llama_index.readers.base import BaseReader
 from llama_index.readers.schema.base import Document
 
@@ -17,6 +18,7 @@ class ApifyCallActor(BaseReader):
         """Initialize Apify call Actor reader."""
         from apify_client import ApifyClient
 
+        self.apify_api_token = apify_api_token
         self.apify_client = ApifyClient(apify_api_token)
 
     def load_data(
@@ -46,15 +48,12 @@ class ApifyCallActor(BaseReader):
             memory_mbytes=memory_mbytes,
             timeout_secs=timeout_secs,
         )
-        items_list = self.apify_client.dataset(
-            actor_call.get("datasetId")
-        ).list_items(clean=True)
 
-        document_list = []
-        for item in items_list.items:
-            document = dataset_mapping_function(item)
-            if not isinstance(document, Document):
-                raise ValueError("Dataset_mapping_function must return a Document")
-            document_list.append(document)
+        ApifyDataset = download_loader("ApifyDataset")
+        reader = ApifyDataset(self.apify_api_token)
+        documents = reader.load_data(
+            dataset_id=actor_call.get("datasetId"),
+            dataset_mapping_function=dataset_mapping_function,
+        )
 
-        return document_list
+        return documents

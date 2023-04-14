@@ -1,4 +1,4 @@
-# Apify Actor Run Loader
+# Apify Actor Loader
 
 Apify is a cloud platform for web scraping and data extraction,
 which provides an [ecosystem](https://apify.com/store) of more than a thousand
