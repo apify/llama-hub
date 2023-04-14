@@ -1,5 +1,5 @@
 """Apify call Actor reader"""
-from typing import Any, Callable, Dict, List, Optional
+from typing import Callable, Dict, List, Optional
 
 from llama_index import download_loader
 from llama_index.readers.base import BaseReader
@@ -42,7 +42,7 @@ class ApifyCallActor(BaseReader):
         Returns:
             List[Document]: List of documents.
         """
-        actor_call = apify_client.actor(actor_id).call(
+        actor_call = self.apify_client.actor(actor_id).call(
             run_input=run_input,
             build=build,
             memory_mbytes=memory_mbytes,
