@@ -49,7 +49,8 @@ class ApifyActor(BaseReader):
             timeout_secs=timeout_secs,
         )
 
-        ApifyDataset = download_loader("ApifyDataset")
+        test_repo = "https://raw.githubusercontent.com/apify/llama-hub/test/testing/loader_hub"
+        ApifyDataset = download_loader("ApifyDataset", test_repo)
         reader = ApifyDataset(self.apify_api_token)
         documents = reader.load_data(
             dataset_id=actor_call.get("defaultDatasetId"),
